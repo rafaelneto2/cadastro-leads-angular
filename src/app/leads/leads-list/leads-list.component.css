@@ -1,0 +1,10 @@
+.button-new-item {
+  background-color: #343a40;
+  color: #fff;
+  border: none;
+}
+
+.button-new-item:hover {
+  color: #fec810;
+  background-color: #343a40;
+}

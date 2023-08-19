@@ -1,0 +1,145 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="title-page">{{title}}</h1>
+    </div>
+  </div>
+  <hr class="my-4">
+  <form #form="ngForm" [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form needs-validation">
+    <div class="row">
+      <div class="form-group col-md-3">
+        <label for="cnpj">CNPJ</label>
+        <input type="text"
+               class="form-control"
+               id="cnpj"
+               formControlName="cnpj"
+               mask="00.000.000/0000-00"
+               required
+               [readOnly] = "formReadOnly">
+        <div class="valid-feedback">CNPJ Válido!</div>
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+      </div>
+      <div class="form-group col-md-9">
+        <label for="razao_social">Razão Social</label>
+        <input type="text"
+               class="form-control"
+               id="razao_social"
+               formControlName="razao_social"
+               required
+               [readOnly] = "formReadOnly">
+        <div class="valid-feedback">Razão Social Válido!</div>
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="form-group col-md-3">
+        <label for="cep">CEP</label>
+        <input type="text"
+               class="form-control"
+               id="cep"
+               formControlName="cep"
+               mask="00000-000"
+               (blur)="consultaCEP()"
+               required
+               [readOnly] = "formReadOnly">
+        <div class="valid-feedback">CEP Válido!</div>
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="form-group col-md-9">
+        <label for="endereco">Endereço</label>
+        <input type="text"
+               class="form-control"
+               id="endereco"
+               formControlName="endereco"
+               required
+               [readOnly] = "formReadOnly">
+        <div class="valid-feedback">Endereço Válido!</div>
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="numero">Número</label>
+        <input type="text"
+               class="form-control"
+               id="numero"
+               formControlName="numero"
+               required
+               [readOnly] = "formReadOnly">
+        <div class="valid-feedback">Número Válido!</div>
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="form-group col-md-6">
+        <label for="complemento">Complemento</label>
+        <input type="text"
+               class="form-control"
+               id="complemento"
+               formControlName="complemento"
+               [readOnly] = "formReadOnly">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="bairro">Bairro</label>
+        <input type="text"
+               class="form-control"
+               id="bairro"
+               formControlName="bairro"
+               required
+               [readOnly] = "formReadOnly">
+        <div class="valid-feedback">Bairro Válido!</div>
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="form-group col-md-6">
+        <label for="cidade">Cidade</label>
+        <input type="text"
+               class="form-control"
+               id="cidade"
+               formControlName="cidade"
+               required
+               [readOnly] = "formReadOnly">
+        <div class="valid-feedback">Cidade Válido!</div>
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="estado">Estado</label>
+        <input type="text"
+               class="form-control"
+               id="estado"
+               formControlName="estado"
+               required
+               [readOnly] = "formReadOnly">
+        <div class="valid-feedback">Estado Válido!</div>
+        <div class="invalid-feedback">Por favor, preencha este campo.</div>
+      </div>
+    </div>
+    <button type="submit" class="btn mt-3">{{textButton}}</button>
+    <a *ngIf="!context?.includes('visualizar-lead')" routerLink="/" class="btn mt-3">Voltar</a>
+  </form>
+</div>
+
+<div class="modal"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Confirmação de exclusão</h4>
+      </div>
+      <div class="modal-body">
+        <p>Tem certeza que deseja remover o Lead {{formGroup.get('razao_social')?.value}}?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"
+                (click)="closeModalConfirmaExclusao()">Não
+        </button>
+        <button type="button" class="btn btn-danger"
+                (click)="excluiLead()">Sim
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

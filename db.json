@@ -1,0 +1,28 @@
+{
+  "leads": [
+    {
+      "cnpj": "19626592000180",
+      "razao_social": "Letícia e José Doces & Salgados ME",
+      "cep": "02987070",
+      "endereco": "Rua Campo da Aclamação",
+      "numero": "851",
+      "complemento": "teste",
+      "bairro": "Parque Taipas",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "cnpj": "19626592000180",
+      "razao_social": "Letícia e José Doces & Salgados ME",
+      "cep": "02987070",
+      "endereco": "Rua Campo da Aclamação",
+      "numero": "851",
+      "complemento": "",
+      "bairro": "Parque Taipas",
+      "cidade": "São Paulo",
+      "estado": "SP"
+    }
+  ]
+}

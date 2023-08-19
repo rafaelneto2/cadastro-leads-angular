@@ -1,0 +1,44 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-12 col-lg-9">
+      <h1 class="title-page">Gerenciar Leads</h1>
+    </div>
+    <div class="col-lg-3 col-12">
+      <a routerLink="/novo-lead" class="btn w-100 button-new-item">Novo Lead</a>
+    </div>
+  </div>
+  <hr class="my-4">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="title-table">Lista de Leads</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>CNPJ</th>
+            <th>Razão Social</th>
+            <th>CEP</th>
+            <th>Estado</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let lead of leads | slice: (currentPage - 1) * pageSize : (currentPage - 1) * pageSize + pageSize">
+            <td>{{ lead.cnpj | cpfCnpj }}</td>
+            <td>{{ lead.razao_social }}</td>
+            <td>{{ lead.cep | cep }}</td>
+            <td>{{ lead.estado }}</td>
+            <td>
+              <a [routerLink]="'/visualizar-lead/' + lead['id']" class="btn me-2 button-new-item">Visualizar</a>
+              <a [routerLink]="'/editar-lead/' + lead['id']" class="btn me-2 button-new-item">Editar</a>
+              <a [routerLink]="'/excluir-lead/' + lead['id']" class="btn button-new-item">Excluir</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
